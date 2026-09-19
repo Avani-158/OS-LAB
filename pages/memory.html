@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>OS LAB - Memory Management</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/simulator.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">◉</span>
+                <span>OS LAB</span>
+            </div>
+
+
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN</p>
+
+                <a
+                    href="../index.html"
+                    class="nav-item"
+                >
+                    <span>⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <p class="nav-heading">SIMULATORS</p>
+
+                <a
+                    href="cpu.html"
+                    class="nav-item"
+                >
+                    <span>⚙</span>
+                    <span>CPU Scheduling</span>
+                </a>
+
+
+                <a
+                    href="memory.html"
+                    class="nav-item active"
+                >
+                    <span>▦</span>
+                    <span>Memory Management</span>
+                </a>
+
+
+                <a
+                    href="paging.html"
+                    class="nav-item"
+                >
+                    <span>▤</span>
+                    <span>Page Replacement</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="help.html"
+                    class="nav-item"
+                >
+                    <span>?</span>
+                    <span>Help</span>
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="nav-item"
+                >
+                    <span>ⓘ</span>
+                    <span>About</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main-content">
+
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="breadcrumb">
+                        OS LAB / Memory Management
+                    </p>
+
+                    <h1>
+                        Memory Management Simulator
+                    </h1>
+
+                </div>
+
+
+                <button
+                    class="theme-button"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </header>
+
+
+            <!-- INTRO -->
+
+            <section class="page-header">
+
+                <p class="eyebrow">
+                    MEMORY MANAGEMENT
+                </p>
+
+                <h2>
+                    Simulate Memory Allocation
+                </h2>
+
+                <p>
+                    Visualize how allocation algorithms assign
+                    processes to available memory blocks.
+                </p>
+
+            </section>
+
+
+            <!-- INPUT -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            MEMORY INPUT
+                        </p>
+
+                        <h3>
+                            Memory Configuration
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-grid">
+
+
+                    <div class="control-group">
+
+                        <label for="memoryBlocks">
+                            Memory Blocks
+                        </label>
+
+                        <input
+                            type="text"
+                            id="memoryBlocks"
+                            placeholder="100, 500, 200, 300, 600"
+                        >
+
+                    </div>
+
+
+                    <div class="control-group">
+
+                        <label for="memoryProcesses">
+                            Process Sizes
+                        </label>
+
+                        <input
+                            type="text"
+                            id="memoryProcesses"
+                            placeholder="212, 417, 112, 426"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ALGORITHM -->
+
+            <section class="simulator-card">
+
+                <div class="control-row">
+
+
+                    <div class="control-group">
+
+                        <label for="memoryAlgorithm">
+                            Allocation Algorithm
+                        </label>
+
+                        <select id="memoryAlgorithm">
+
+                            <option value="firstFit">
+                                First Fit
+                            </option>
+
+                            <option value="bestFit">
+                                Best Fit
+                            </option>
+
+                            <option value="worstFit">
+                                Worst Fit
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="runMemorySimulation"
+                    >
+                        Run Simulation →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- VISUALIZATION -->
+
+            <section class="simulator-card visualization-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            MEMORY STATE
+                        </p>
+
+                        <h3>
+                            Memory Blocks
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="memory-visualization"
+                    id="memoryVisualization"
+                >
+
+                    <p class="empty-state">
+                        Run a simulation to visualize memory allocation.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- RESULTS -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            RESULTS
+                        </p>
+
+                        <h3>
+                            Allocation Results
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="memory-results"
+                    id="memoryResults"
+                >
+
+                    <p class="empty-state">
+                        Results will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+
+</html>

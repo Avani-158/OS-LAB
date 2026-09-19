@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>OS LAB - CPU Scheduling</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/simulator.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <span class="logo-icon">◉</span>
+
+                <span>OS LAB</span>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN</p>
+
+                <a
+                    href="../index.html"
+                    class="nav-item"
+                >
+                    <span>⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <p class="nav-heading">SIMULATORS</p>
+
+                <a
+                    href="cpu.html"
+                    class="nav-item active"
+                >
+                    <span>⚙</span>
+                    <span>CPU Scheduling</span>
+                </a>
+
+
+                <a
+                    href="memory.html"
+                    class="nav-item"
+                >
+                    <span>▦</span>
+                    <span>Memory Management</span>
+                </a>
+
+
+                <a
+                    href="paging.html"
+                    class="nav-item"
+                >
+                    <span>▤</span>
+                    <span>Page Replacement</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="help.html"
+                    class="nav-item"
+                >
+                    <span>?</span>
+                    <span>Help</span>
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="nav-item"
+                >
+                    <span>ⓘ</span>
+                    <span>About</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main-content">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="breadcrumb">
+                        OS LAB / CPU Scheduling
+                    </p>
+
+                    <h1>
+                        CPU Scheduling Simulator
+                    </h1>
+
+                </div>
+
+
+                <button
+                    class="theme-button"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </header>
+
+
+            <!-- PAGE INTRO -->
+
+            <section class="page-header">
+
+                <p class="eyebrow">
+                    CPU SCHEDULING
+                </p>
+
+                <h2>
+                    Simulate CPU Scheduling
+                </h2>
+
+                <p>
+                    Compare scheduling algorithms and visualize
+                    how processes are selected and executed.
+                </p>
+
+            </section>
+
+
+            <!-- INPUT MODE -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            INPUT
+                        </p>
+
+                        <h3>
+                            Choose Input Mode
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mode-buttons">
+
+                    <button
+                        class="mode-button active"
+                        id="manualMode"
+                    >
+                        Manual Input
+                    </button>
+
+
+                    <button
+                        class="mode-button"
+                        id="generateMode"
+                    >
+                        Generate Scenario
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROCESS INPUT -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PROCESS INPUT
+                        </p>
+
+                        <h3>
+                            Processes
+                        </h3>
+
+                    </div>
+
+
+                    <button
+                        class="secondary-button"
+                        id="addProcess"
+                    >
+                        + Add Process
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>PID</th>
+                                <th>Arrival Time</th>
+                                <th>Burst Time</th>
+                                <th>Priority</th>
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="processTableBody">
+
+                            <!-- JS will generate rows -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ALGORITHM -->
+
+            <section class="simulator-card">
+
+                <div class="control-row">
+
+
+                    <div class="control-group">
+
+                        <label for="algorithm">
+                            Scheduling Algorithm
+                        </label>
+
+                        <select id="algorithm">
+
+                            <option value="fcfs">
+                                FCFS
+                            </option>
+
+                            <option value="sjf">
+                                SJF
+                            </option>
+
+                            <option value="srtf">
+                                SRTF
+                            </option>
+
+                            <option value="rr">
+                                Round Robin
+                            </option>
+
+                            <option value="priority">
+                                Priority Scheduling
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div
+                        class="control-group"
+                        id="quantumControl"
+                    >
+
+                        <label for="timeQuantum">
+                            Time Quantum
+                        </label>
+
+                        <input
+                            type="number"
+                            id="timeQuantum"
+                            min="1"
+                            value="2"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="primary-button run-button"
+                        id="runSimulation"
+                    >
+                        Run Simulation →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- READY QUEUE -->
+
+            <section class="simulator-card visualization-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            CPU STATE
+                        </p>
+
+                        <h3>
+                            Ready Queue
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="ready-queue"
+                    id="readyQueue"
+                >
+
+                    <p class="empty-state">
+                        Run a simulation to see the ready queue.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CPU -->
+
+            <section class="simulator-card visualization-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PROCESSOR
+                        </p>
+
+                        <h3>
+                            CPU
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="cpu-display"
+                    id="cpuDisplay"
+                >
+
+                    <div class="cpu-core">
+                        CPU
+                    </div>
+
+                    <p>
+                        Waiting for simulation...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- GANTT -->
+
+            <section class="simulator-card visualization-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            EXECUTION TIMELINE
+                        </p>
+
+                        <h3>
+                            Gantt Chart
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="gantt-container"
+                    id="ganttChart"
+                >
+
+                    <p class="empty-state">
+                        Run a simulation to generate the Gantt chart.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- RESULTS -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PERFORMANCE
+                        </p>
+
+                        <h3>
+                            Results
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid">
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Average Waiting Time
+                        </span>
+
+                        <strong id="avgWaitingTime">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Average Turnaround Time
+                        </span>
+
+                        <strong id="avgTurnaroundTime">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Average Response Time
+                        </span>
+
+                        <strong id="avgResponseTime">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            CPU Utilization
+                        </span>
+
+                        <strong id="cpuUtilization">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>PID</th>
+                                <th>Completion Time</th>
+                                <th>Turnaround Time</th>
+                                <th>Waiting Time</th>
+                                <th>Response Time</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="cpuResultsBody">
+
+                            <!-- JS will generate results -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+
+</html>

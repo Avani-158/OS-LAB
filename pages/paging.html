@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>OS LAB - Page Replacement</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/simulator.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <span class="logo-icon">◉</span>
+
+                <span>OS LAB</span>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN</p>
+
+                <a
+                    href="../index.html"
+                    class="nav-item"
+                >
+                    <span>⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <p class="nav-heading">SIMULATORS</p>
+
+                <a
+                    href="cpu.html"
+                    class="nav-item"
+                >
+                    <span>⚙</span>
+                    <span>CPU Scheduling</span>
+                </a>
+
+
+                <a
+                    href="memory.html"
+                    class="nav-item"
+                >
+                    <span>▦</span>
+                    <span>Memory Management</span>
+                </a>
+
+
+                <a
+                    href="paging.html"
+                    class="nav-item active"
+                >
+                    <span>▤</span>
+                    <span>Page Replacement</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="help.html"
+                    class="nav-item"
+                >
+                    <span>?</span>
+                    <span>Help</span>
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="nav-item"
+                >
+                    <span>ⓘ</span>
+                    <span>About</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main-content">
+
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="breadcrumb">
+                        OS LAB / Page Replacement
+                    </p>
+
+                    <h1>
+                        Page Replacement Simulator
+                    </h1>
+
+                </div>
+
+
+                <button
+                    class="theme-button"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </header>
+
+
+            <!-- INTRO -->
+
+            <section class="page-header">
+
+                <p class="eyebrow">
+                    PAGE REPLACEMENT
+                </p>
+
+                <h2>
+                    Simulate Page Replacement
+                </h2>
+
+                <p>
+                    Visualize page hits, page faults,
+                    and replacement decisions.
+                </p>
+
+            </section>
+
+
+            <!-- INPUT -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PAGE INPUT
+                        </p>
+
+                        <h3>
+                            Reference String
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-grid">
+
+
+                    <div class="control-group">
+
+                        <label for="referenceString">
+                            Reference String
+                        </label>
+
+                        <input
+                            type="text"
+                            id="referenceString"
+                            placeholder="7, 0, 1, 2, 0, 3, 0, 4"
+                        >
+
+                    </div>
+
+
+                    <div class="control-group">
+
+                        <label for="frameCount">
+                            Number of Frames
+                        </label>
+
+                        <input
+                            type="number"
+                            id="frameCount"
+                            min="1"
+                            value="3"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ALGORITHM -->
+
+            <section class="simulator-card">
+
+                <div class="control-row">
+
+
+                    <div class="control-group">
+
+                        <label for="pagingAlgorithm">
+                            Replacement Algorithm
+                        </label>
+
+                        <select id="pagingAlgorithm">
+
+                            <option value="fifo">
+                                FIFO
+                            </option>
+
+                            <option value="lru">
+                                LRU
+                            </option>
+
+                            <option value="optimal">
+                                Optimal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="runPagingSimulation"
+                    >
+                        Run Simulation →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- VISUALIZATION -->
+
+            <section class="simulator-card visualization-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            MEMORY FRAMES
+                        </p>
+
+                        <h3>
+                            Page Replacement
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="paging-visualization"
+                    id="pagingVisualization"
+                >
+
+                    <p class="empty-state">
+                        Run a simulation to visualize page replacement.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- RESULTS -->
+
+            <section class="simulator-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            PERFORMANCE
+                        </p>
+
+                        <h3>
+                            Results
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metrics-grid">
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Page Faults
+                        </span>
+
+                        <strong id="pageFaults">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Page Hits
+                        </span>
+
+                        <strong id="pageHits">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Fault Ratio
+                        </span>
+
+                        <strong id="faultRatio">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <span>
+                            Hit Ratio
+                        </span>
+
+                        <strong id="hitRatio">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="table-container"
+                    id="pagingResults"
+                >
+
+                    <!-- JS will generate results -->
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+
+</html>

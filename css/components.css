@@ -1,0 +1,271 @@
+/* =================================
+   OS LAB - REUSABLE COMPONENTS
+================================= */
+
+
+/* ---------- CARDS ---------- */
+
+.simulator-card,
+.info-card,
+.stat-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: var(--space);
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.primary-button {
+    padding: 12px 20px;
+
+    background: var(--accent);
+    color: var(--text);
+
+    border: none;
+    border-radius: var(--small-radius);
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.primary-button:hover {
+    background: var(--accent-hover);
+
+    transform: translateY(-2px);
+}
+
+
+.secondary-button {
+    padding: 10px 16px;
+
+    background: transparent;
+    color: var(--text-muted);
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--small-radius);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.secondary-button:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+
+/* ---------- FORM CONTROLS ---------- */
+
+.control-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.control-group label {
+    color: var(--text-muted);
+
+    font-size: 13px;
+}
+
+
+.control-group input,
+.control-group select {
+    min-height: 42px;
+
+    background: var(--surface-light);
+
+    color: var(--text);
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--small-radius);
+
+    padding: 9px 12px;
+
+    outline: none;
+}
+
+
+.control-group input:focus,
+.control-group select:focus {
+    border-color: var(--accent);
+}
+
+
+/* ---------- MODE BUTTONS ---------- */
+
+.mode-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+
+.mode-button {
+    padding: 11px 20px;
+
+    background: var(--surface-light);
+    color: var(--text-muted);
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--small-radius);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.mode-button:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+
+.mode-button.active {
+    background: var(--accent);
+    color: var(--text);
+
+    border-color: var(--accent);
+}
+
+
+/* ---------- DATA TABLE ---------- */
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 20px;
+}
+
+
+.data-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.data-table th {
+    padding: 13px 12px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid var(--border-light);
+}
+
+
+.data-table td {
+    padding: 12px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* ---------- TABLE INPUT ---------- */
+
+.data-table input {
+    width: 100%;
+
+    min-width: 70px;
+
+    background: var(--surface-light);
+
+    color: var(--text);
+
+    border: 1px solid var(--border-light);
+
+    border-radius: 7px;
+
+    padding: 9px;
+
+    outline: none;
+}
+
+
+.data-table input:focus {
+    border-color: var(--accent);
+}
+
+
+/* ---------- DELETE BUTTON ---------- */
+
+.delete-button {
+    width: 32px;
+    height: 32px;
+
+    background: transparent;
+
+    color: var(--text-muted);
+
+    border: 1px solid var(--border-light);
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+
+.delete-button:hover {
+    color: var(--danger);
+
+    border-color: var(--danger);
+}
+
+
+/* ---------- METRIC CARD ---------- */
+
+.metric-card {
+    background: var(--surface-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--small-radius);
+
+    padding: 18px;
+}
+
+
+.metric-card span {
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+
+.metric-card strong {
+    font-size: 24px;
+}

@@ -1,0 +1,128 @@
+/* =================================
+   OS LAB - RESPONSIVE DESIGN
+================================= */
+
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .module-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+
+        padding: 15px;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+
+    .navigation,
+    .sidebar-bottom {
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+
+    .nav-heading {
+        display: none;
+    }
+
+
+    .nav-item {
+        white-space: nowrap;
+
+        width: auto;
+    }
+
+
+    .main-content {
+        padding: 22px 16px;
+    }
+
+
+    .topbar {
+        margin-bottom: 25px;
+    }
+
+
+    .topbar h1 {
+        font-size: 20px;
+    }
+
+
+    .welcome-section {
+        padding: 28px 22px;
+    }
+
+
+    .welcome-text h2 {
+        font-size: 28px;
+    }
+
+
+    .module-grid,
+    .stats-section,
+    .metrics-grid,
+    .input-grid,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .control-row {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .run-button {
+        margin-left: 0;
+    }
+
+
+    .section-header {
+        align-items: flex-start;
+    }
+
+}

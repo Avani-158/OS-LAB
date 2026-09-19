@@ -1,0 +1,198 @@
+/* =================================
+   OS LAB - DASHBOARD
+================================= */
+
+
+/* ---------- WELCOME ---------- */
+
+.welcome-section {
+    background:
+        linear-gradient(
+            135deg,
+            #11162a,
+            #0d111c
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 40px;
+
+    margin-bottom: 35px;
+}
+
+
+.welcome-text {
+    max-width: 650px;
+}
+
+
+.welcome-text h2 {
+    font-size: 36px;
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+}
+
+
+.welcome-text h2 span {
+    color: var(--accent);
+}
+
+
+.welcome-text p:last-child {
+    color: var(--text-muted);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* ---------- MODULES ---------- */
+
+.modules-section {
+    margin-bottom: 35px;
+}
+
+
+.modules-section .section-header {
+    margin-bottom: 18px;
+}
+
+
+.modules-section h2 {
+    font-size: 22px;
+}
+
+
+/* ---------- MODULE GRID ---------- */
+
+.module-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* ---------- MODULE CARD ---------- */
+
+.module-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 24px;
+
+    transition: 0.25s;
+}
+
+
+.module-card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--accent);
+}
+
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface-light);
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    font-size: 20px;
+
+    color: var(--accent);
+}
+
+
+.module-card h3 {
+    font-size: 18px;
+
+    margin-bottom: 10px;
+}
+
+
+.module-card p {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 22px;
+}
+
+
+.card-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+
+.arrow {
+    color: var(--accent);
+
+    font-size: 18px;
+}
+
+
+/* ---------- STATISTICS ---------- */
+
+.stats-section {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+
+.stat-card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.stat-label {
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+
+.stat-card strong {
+    font-size: 28px;
+}
+
+
+.stat-description {
+    color: #606a80;
+
+    font-size: 11px;
+}

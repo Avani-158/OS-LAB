@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>OS LAB - Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <span class="logo-icon">◉</span>
+
+                <span>OS LAB</span>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN</p>
+
+                <a
+                    href="index.html"
+                    class="nav-item active"
+                >
+                    <span>⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <p class="nav-heading">SIMULATORS</p>
+
+                <a
+                    href="pages/cpu.html"
+                    class="nav-item"
+                >
+                    <span>⚙</span>
+                    <span>CPU Scheduling</span>
+                </a>
+
+
+                <a
+                    href="pages/memory.html"
+                    class="nav-item"
+                >
+                    <span>▦</span>
+                    <span>Memory Management</span>
+                </a>
+
+
+                <a
+                    href="pages/paging.html"
+                    class="nav-item"
+                >
+                    <span>▤</span>
+                    <span>Page Replacement</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="pages/help.html"
+                    class="nav-item"
+                >
+                    <span>?</span>
+                    <span>Help</span>
+                </a>
+
+
+                <a
+                    href="pages/about.html"
+                    class="nav-item"
+                >
+                    <span>ⓘ</span>
+                    <span>About</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="breadcrumb">
+                        OS LAB / Dashboard
+                    </p>
+
+                    <h1>
+                        Operating System Simulator
+                    </h1>
+
+                </div>
+
+
+                <button
+                    class="theme-button"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </header>
+
+
+            <!-- =========================
+                 WELCOME
+            ========================== -->
+
+            <section class="welcome-section">
+
+                <div class="welcome-text">
+
+                    <p class="eyebrow">
+                        INTERACTIVE LEARNING LAB
+                    </p>
+
+                    <h2>
+                        Understand Operating Systems
+                        <span>Visually.</span>
+                    </h2>
+
+                    <p>
+                        Simulate operating system algorithms,
+                        visualize their execution, and understand
+                        how every decision is made.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 MODULES
+            ========================== -->
+
+            <section class="modules-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            SIMULATION MODULES
+                        </p>
+
+                        <h2>
+                            Choose a Module
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="module-grid">
+
+
+                    <!-- CPU -->
+
+                    <a
+                        href="pages/cpu.html"
+                        class="module-card"
+                    >
+
+                        <div class="card-icon">
+                            ⚙
+                        </div>
+
+                        <h3>
+                            CPU Scheduling
+                        </h3>
+
+                        <p>
+                            Visualize how the CPU selects
+                            and executes processes.
+                        </p>
+
+                        <div class="card-footer">
+
+                            <span>
+                                5 Algorithms
+                            </span>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- MEMORY -->
+
+                    <a
+                        href="pages/memory.html"
+                        class="module-card"
+                    >
+
+                        <div class="card-icon">
+                            ▦
+                        </div>
+
+                        <h3>
+                            Memory Management
+                        </h3>
+
+                        <p>
+                            See how processes are allocated
+                            into memory blocks.
+                        </p>
+
+                        <div class="card-footer">
+
+                            <span>
+                                3 Algorithms
+                            </span>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PAGING -->
+
+                    <a
+                        href="pages/paging.html"
+                        class="module-card"
+                    >
+
+                        <div class="card-icon">
+                            ▤
+                        </div>
+
+                        <h3>
+                            Page Replacement
+                        </h3>
+
+                        <p>
+                            Explore page faults, hits,
+                            and replacement strategies.
+                        </p>
+
+                        <div class="card-footer">
+
+                            <span>
+                                3 Algorithms
+                            </span>
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 STATISTICS
+            ========================== -->
+
+            <section class="stats-section">
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        Algorithms
+                    </span>
+
+                    <strong>
+                        11
+                    </strong>
+
+                    <span class="stat-description">
+                        Across all modules
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        Input Modes
+                    </span>
+
+                    <strong>
+                        2
+                    </strong>
+
+                    <span class="stat-description">
+                        Manual + Generated
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        Visualizations
+                    </span>
+
+                    <strong>
+                        3
+                    </strong>
+
+                    <span class="stat-description">
+                        Interactive modules
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        Technology
+                    </span>
+
+                    <strong>
+                        JS
+                    </strong>
+
+                    <span class="stat-description">
+                        Vanilla JavaScript
+                    </span>
+
+                </article>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+/* =================================
+   OS LAB - SIMULATORS
+================================= */
+
+
+/* ---------- PAGE HEADER ---------- */
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+
+.page-header h2 {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+
+.page-header > p:last-child {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ---------- SIMULATOR SPACING ---------- */
+
+.simulator-page > * {
+    margin-bottom: 20px;
+}
+
+
+/* ---------- CONTROL ROW ---------- */
+
+.control-row {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 18px;
+}
+
+
+.run-button {
+    margin-left: auto;
+}
+
+
+/* ---------- INPUT GRID ---------- */
+
+.input-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 20px;
+}
+
+
+/* ---------- VISUALIZATION ---------- */
+
+.visualization-card {
+    min-height: 150px;
+}
+
+
+.ready-queue {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 80px;
+
+    margin-top: 20px;
+}
+
+
+.cpu-display {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    min-height: 150px;
+
+    margin-top: 20px;
+}
+
+
+.cpu-core {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface-light);
+
+    border: 2px solid var(--accent);
+
+    border-radius: 50%;
+
+    font-weight: bold;
+}
+
+
+/* ---------- GANTT ---------- */
+
+.gantt-container {
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 20px;
+
+    overflow-x: auto;
+}
+
+
+/* ---------- METRICS ---------- */
+
+.metrics-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin: 20px 0;
+}
+
+
+/* ---------- MEMORY VISUALIZATION ---------- */
+
+.memory-visualization {
+    min-height: 180px;
+
+    margin-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ---------- PAGING VISUALIZATION ---------- */
+
+.paging-visualization {
+    min-height: 180px;
+
+    margin-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ---------- INFO PAGES ---------- */
+
+.info-page .page-header {
+    margin-bottom: 30px;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.info-card h3 {
+    margin-bottom: 12px;
+}
+
+
+.info-card p {
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+}
+
+
+.about-card {
+    max-width: 850px;
+}
+
+
+.technology-list {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+.technology-list span {
+    padding: 7px 12px;
+
+    background: var(--surface-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
