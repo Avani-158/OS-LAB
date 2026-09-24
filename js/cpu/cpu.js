@@ -1,4 +1,9 @@
-import { generateProcesses } from "../data.js";
+import {
+    generateProcesses,
+    saveProcesses,
+    loadProcesses,
+    clearStoredProcesses
+} from "../data.js";
 
 import { fcfs } from "./fcfs.js";
 import { sjf } from "./sjf.js";
@@ -15,6 +20,11 @@ const quantumControl = document.getElementById("quantumControl");
 const timeQuantum = document.getElementById("timeQuantum");
 const runSimulationButton = document.getElementById("runSimulation");
 
+const processCount =document.getElementById("processCount");
+const addProcessButton =document.getElementById("addProcess");
+const saveProcessesButton =document.getElementById("saveProcesses");
+const clearProcessesButton =document.getElementById("clearProcesses");
+
 
 let currentMode = "manual";
 let currentProcesses = [];
@@ -24,7 +34,12 @@ initialize();
 
 function initialize() {
 
-    currentProcesses = generateProcesses(5);
+    const savedProcesses =
+        loadProcesses();
+
+    currentProcesses =
+        savedProcesses ||
+        generateProcesses(5);
 
     renderProcessTable();
 
@@ -55,6 +70,21 @@ function setupEvents() {
         runSimulation
     );
 
+    addProcessButton.addEventListener(
+        "click",
+        addProcess
+    );
+
+    saveProcessesButton.addEventListener(
+        "click",
+        saveCurrentProcesses
+    );
+
+    clearProcessesButton.addEventListener(
+        "click",
+        clearProcesses
+    );
+
     updateQuantumVisibility();
 
 }
@@ -64,20 +94,16 @@ function switchMode(mode) {
 
     currentMode = mode;
 
-    manualModeButton.classList.toggle(
-        "active",
-        mode === "manual"
-    );
+    manualModeButton.classList.toggle("active",mode === "manual");
 
-    generateModeButton.classList.toggle(
-        "active",
-        mode === "generate"
-    );
+    generateModeButton.classList.toggle("active", mode === "generate");
 
 
     if (mode === "generate") {
 
-        currentProcesses = generateProcesses(5);
+       const count =Number(processCount.value);
+
+        currentProcesses =generateProcesses(count);
 
         renderProcessTable();
 
@@ -94,8 +120,7 @@ function renderProcessTable() {
     currentProcesses.forEach(
         (process, index) => {
 
-            const row =
-                document.createElement("tr");
+            const row =document.createElement("tr");
 
             row.innerHTML = `
                 <td>
@@ -136,6 +161,16 @@ function renderProcessTable() {
                         data-index="${index}"
                     >
                 </td>
+
+                <td>
+                    <button
+                        class="delete-button"
+                        data-delete="${index}"
+                        type="button"
+                    >
+                        ×
+                    </button>
+                </td>
             `;
 
             processTableBody.appendChild(row);
@@ -145,6 +180,7 @@ function renderProcessTable() {
 
 
     connectInputs();
+    connectDeleteButtons();
 
 }
 
@@ -165,6 +201,28 @@ function connectInputs() {
 
 }
 
+function connectDeleteButtons() {
+
+    const buttons =processTableBody.querySelectorAll("[data-delete]");
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const index =Number(button.dataset.delete);
+
+                currentProcesses.splice(index,1);
+
+                renderProcessTable();
+
+            }
+        );
+
+    });
+
+}
 
 function updateProcess(event) {
 
@@ -190,6 +248,51 @@ function updateQuantumVisibility() {
         algorithmSelect.value === "rr"
             ? "flex"
             : "none";
+
+}
+
+function connectDeleteButtons() {
+
+    const buttons =
+        processTableBody.querySelectorAll(
+            "[data-delete]"
+        );
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const index =
+                    Number(button.dataset.delete);
+
+                currentProcesses.splice(
+                    index,
+                    1
+                );
+
+                renderProcessTable();
+
+            }
+        );
+
+    });
+
+}
+
+function addProcess() {
+
+    const nextNumber = currentProcesses.length + 1;
+
+    currentProcesses.push({
+        pid: `P${nextNumber}`,
+        arrivalTime: 0,
+        burstTime: 1,
+        priority: 1
+    });
+
+    renderProcessTable();
 
 }
 
@@ -253,5 +356,23 @@ function runSimulation() {
 function displayResult(result) {
 
     console.log("Simulation Result:", result);
+
+}
+
+function saveCurrentProcesses() {
+
+    saveProcesses(currentProcesses);
+
+    alert("Processes saved successfully.");
+
+}
+
+function clearProcesses() {
+
+    currentProcesses = [];
+
+    clearStoredProcesses();
+
+    renderProcessTable();
 
 }

@@ -181,22 +181,53 @@
 
 
                 <div class="mode-buttons">
-
-                    <button
-                        class="mode-button active"
-                        id="manualMode"
-                    >
+                    <button class="mode-button active" id="manualMode">
                         Manual Input
                     </button>
 
-
-                    <button
-                        class="mode-button"
-                        id="generateMode"
-                    >
+                    <button class="mode-button" id="generateMode">
                         Generate Scenario
                     </button>
+                </div>
 
+                <div class="control-row">
+                    <div class="control-group">
+                        <label for="processCount">
+                            Number of Processes
+                        </label>
+
+                        <input
+                            type="number"
+                            id="processCount"
+                            min="1"
+                            max="20"
+                            value="5"
+                        >
+                    </div>
+
+                    <button
+                        class="secondary-button"
+                        id="addProcess"
+                        type="button"
+                    >
+                        + Add Process
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="saveProcesses"
+                        type="button"
+                    >
+                        Save
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="clearProcesses"
+                        type="button"
+                    >
+                        Clear
+                    </button>
                 </div>
 
             </section>
@@ -559,6 +590,7 @@
 
 
     <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/cpu/cpu.js"></script>
 
 </body>
 
