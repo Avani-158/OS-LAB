@@ -46,10 +46,23 @@ function fcfs(processes) {
 
         currentTime = completionTime;
     }
+    
+    const busyTime = gantt.reduce((total, block) => {
+        if (block.pid === "IDLE") {
+            return total;
+        }
+
+        return total + (block.end - block.start);
+    }, 0);
+
+    const totalTime = currentTime;
+
+    const cpuUtilization = (busyTime / totalTime) * 100;
 
     return {
         results,
-        gantt
+        gantt,
+        cpuUtilization
     };
 }
 

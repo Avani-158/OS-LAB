@@ -11,6 +11,8 @@ import { fcfs } from "./fcfs.js";
 // import { roundRobin } from "./roundRobin.js";
 // import { priority } from "./priority.js";
 
+import { renderGanttChart } from "../visualization/gantt.js";
+
 
 const processTableBody = document.getElementById("processTableBody");
 const manualModeButton = document.getElementById("manualMode");
@@ -336,6 +338,11 @@ function displayResult(result) {
 
     document.getElementById("avgResponseTime").textContent =
         averageResponseTime.toFixed(2);
+
+    document.getElementById("cpuUtilization").textContent =
+    Number(result.cpuUtilization).toFixed(2) + "%";
+
+    renderGanttChart(result.gantt);
 }
 
 function saveCurrentProcesses() {
