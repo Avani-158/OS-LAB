@@ -227,3 +227,69 @@
 
     font-size: 12px;
 }
+
+/* ---------- GANTT CHART ---------- */
+
+.gantt-container {
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    margin-top: 20px;
+
+    overflow-x: auto;
+}
+
+.gantt-chart {
+    display: flex;
+
+    width: 100%;
+    min-height: 80px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.gantt-item {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 60px;
+
+    background: var(--accent);
+
+    color: white;
+
+    border-right: 1px solid var(--border);
+}
+
+.gantt-process {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.gantt-time {
+    margin-top: 5px;
+
+    font-size: 11px;
+}
+
+.gantt-timeline {
+    display: flex;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+    color: var(--text-muted);
+}
