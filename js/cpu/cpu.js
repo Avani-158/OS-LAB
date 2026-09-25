@@ -6,10 +6,10 @@ import {
 } from "../data.js";
 
 import { fcfs } from "./fcfs.js";
-import { sjf } from "./sjf.js";
-import { srtf } from "./srtf.js";
-import { roundRobin } from "./roundRobin.js";
-import { priority } from "./priority.js";
+// import { sjf } from "./sjf.js";
+// import { srtf } from "./srtf.js";
+// import { roundRobin } from "./roundRobin.js";
+// import { priority } from "./priority.js";
 
 
 const processTableBody = document.getElementById("processTableBody");
@@ -20,10 +20,10 @@ const quantumControl = document.getElementById("quantumControl");
 const timeQuantum = document.getElementById("timeQuantum");
 const runSimulationButton = document.getElementById("runSimulation");
 
-const processCount =document.getElementById("processCount");
-const addProcessButton =document.getElementById("addProcess");
-const saveProcessesButton =document.getElementById("saveProcesses");
-const clearProcessesButton =document.getElementById("clearProcesses");
+const processCount = document.getElementById("processCount");
+const addProcessButton = document.getElementById("addProcess");
+const saveProcessesButton = document.getElementById("saveProcesses");
+const clearProcessesButton = document.getElementById("clearProcesses");
 
 
 let currentMode = "manual";
@@ -49,44 +49,17 @@ function initialize() {
 
 
 function setupEvents() {
+    manualModeButton.addEventListener("click", () => switchMode("manual"));
+    generateModeButton.addEventListener("click", () => switchMode("generate"));
 
-    manualModeButton.addEventListener(
-        "click",
-        () => switchMode("manual")
-    );
+    algorithmSelect.addEventListener("change", updateQuantumVisibility);
+    runSimulationButton.addEventListener("click", runSimulation);
 
-    generateModeButton.addEventListener(
-        "click",
-        () => switchMode("generate")
-    );
-
-    algorithmSelect.addEventListener(
-        "change",
-        updateQuantumVisibility
-    );
-
-    runSimulationButton.addEventListener(
-        "click",
-        runSimulation
-    );
-
-    addProcessButton.addEventListener(
-        "click",
-        addProcess
-    );
-
-    saveProcessesButton.addEventListener(
-        "click",
-        saveCurrentProcesses
-    );
-
-    clearProcessesButton.addEventListener(
-        "click",
-        clearProcesses
-    );
+    addProcessButton.addEventListener("click", addProcess);
+    saveProcessesButton.addEventListener("click", saveCurrentProcesses);
+    clearProcessesButton.addEventListener("click", clearProcesses);
 
     updateQuantumVisibility();
-
 }
 
 
@@ -202,26 +175,16 @@ function connectInputs() {
 }
 
 function connectDeleteButtons() {
-
-    const buttons =processTableBody.querySelectorAll("[data-delete]");
+    const buttons = processTableBody.querySelectorAll("[data-delete]");
 
     buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const index = Number(button.dataset.delete);
 
-        button.addEventListener(
-            "click",
-            () => {
-
-                const index =Number(button.dataset.delete);
-
-                currentProcesses.splice(index,1);
-
-                renderProcessTable();
-
-            }
-        );
-
+            currentProcesses.splice(index, 1);
+            renderProcessTable();
+        });
     });
-
 }
 
 function updateProcess(event) {
@@ -251,35 +214,7 @@ function updateQuantumVisibility() {
 
 }
 
-function connectDeleteButtons() {
 
-    const buttons =
-        processTableBody.querySelectorAll(
-            "[data-delete]"
-        );
-
-    buttons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const index =
-                    Number(button.dataset.delete);
-
-                currentProcesses.splice(
-                    index,
-                    1
-                );
-
-                renderProcessTable();
-
-            }
-        );
-
-    });
-
-}
 
 function addProcess() {
 
@@ -354,9 +289,53 @@ function runSimulation() {
 }
 
 function displayResult(result) {
+    const resultsTableBody = document.getElementById("cpuResultsBody");
 
-    console.log("Simulation Result:", result);
+    resultsTableBody.innerHTML = "";
 
+    result.results.forEach(process => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${process.pid}</td>
+            <td>${process.completionTime}</td>
+            <td>${process.turnaroundTime}</td>
+            <td>${process.waitingTime}</td>
+            <td>${process.responseTime}</td>
+        `;
+
+        resultsTableBody.appendChild(row);
+    });
+
+    const totalWaitingTime = result.results.reduce(
+        (total, process) => total + process.waitingTime, 0
+    );
+
+    const totalTurnaroundTime = result.results.reduce(
+        (total, process) => total + process.turnaroundTime, 0
+    );
+
+    const totalResponseTime = result.results.reduce(
+        (total, process) => total + process.responseTime, 0
+    );
+
+    const averageWaitingTime =
+        totalWaitingTime / result.results.length;
+
+    const averageTurnaroundTime =
+        totalTurnaroundTime / result.results.length;
+
+    const averageResponseTime =
+        totalResponseTime / result.results.length;
+
+    document.getElementById("avgWaitingTime").textContent =
+        averageWaitingTime.toFixed(2);
+
+    document.getElementById("avgTurnaroundTime").textContent =
+        averageTurnaroundTime.toFixed(2);
+
+    document.getElementById("avgResponseTime").textContent =
+        averageResponseTime.toFixed(2);
 }
 
 function saveCurrentProcesses() {
