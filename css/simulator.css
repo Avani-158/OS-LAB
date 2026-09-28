@@ -293,3 +293,33 @@
     font-size: 12px;
     color: var(--text-muted);
 }
+
+.queue-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 55px;
+    height: 45px;
+
+    padding: 0 14px;
+
+    background: var(--surface-light);
+
+    border: 1px solid var(--accent);
+
+    border-radius: 8px;
+
+    color: var(--text-primary);
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+
+.cpu-core.running {
+    background: var(--accent);
+    color: white;
+}

@@ -6,7 +6,7 @@ import {
 } from "../data.js";
 
 import { fcfs } from "./fcfs.js";
-// import { sjf } from "./sjf.js";
+import { sjf } from "./sjf.js";
 // import { srtf } from "./srtf.js";
 // import { roundRobin } from "./roundRobin.js";
 // import { priority } from "./priority.js";
@@ -30,7 +30,8 @@ const clearProcessesButton = document.getElementById("clearProcesses");
 
 let currentMode = "manual";
 let currentProcesses = [];
-
+let visualizationTimer;
+let currentVisualizationStep = 0;
 
 initialize();
 
@@ -343,6 +344,90 @@ function displayResult(result) {
     Number(result.cpuUtilization).toFixed(2) + "%";
 
     renderGanttChart(result.gantt);
+
+    visualizeCPU(result);
+}
+
+function visualizeCPU(result) {
+    const readyQueue = document.getElementById("readyQueue");
+    const cpuDisplay = document.getElementById("cpuDisplay");
+
+    clearTimeout(visualizationTimer);
+
+    currentVisualizationStep = 0;
+
+    function showStep() {
+        if (currentVisualizationStep >= result.gantt.length) {
+            readyQueue.innerHTML = `
+                <p class="empty-state">All processes completed.</p>
+            `;
+
+            cpuDisplay.innerHTML = `
+                <div class="cpu-core">CPU</div>
+                <p>Simulation completed.</p>
+            `;
+
+            return;
+        }
+
+        const block = result.gantt[currentVisualizationStep];
+
+        const currentTime = block.start;
+
+        const completedProcesses = result.results.filter(
+            process => process.completionTime <= currentTime
+        );
+
+        const completedPIDs = completedProcesses.map(
+            process => process.pid
+        );
+
+        const queueProcesses = result.results.filter(process => {
+            return (
+                process.arrivalTime <= currentTime &&
+                !completedPIDs.includes(process.pid) &&
+                process.pid !== block.pid
+            );
+        });
+
+        if (block.pid === "IDLE") {
+            cpuDisplay.innerHTML = `
+                <div class="cpu-core">CPU</div>
+                <p>CPU is idle</p>
+            `;
+        } else {
+            cpuDisplay.innerHTML = `
+                <div class="cpu-core running">${block.pid}</div>
+                <p>Running from ${block.start} to ${block.end}</p>
+            `;
+        }
+
+        if (queueProcesses.length === 0) {
+            readyQueue.innerHTML = `
+                <p class="empty-state">Ready queue is empty.</p>
+            `;
+        } else {
+            readyQueue.innerHTML = "";
+
+            queueProcesses.forEach(process => {
+                const item = document.createElement("div");
+
+                item.className = "queue-item";
+                item.textContent = process.pid;
+
+                readyQueue.appendChild(item);
+            });
+        }
+
+        currentVisualizationStep++;
+
+        visualizationTimer = setTimeout(
+            showStep,
+            1200
+        );
+    }
+
+    showStep();
 }
 
 function saveCurrentProcesses() {
