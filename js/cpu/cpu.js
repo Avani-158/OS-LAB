@@ -9,7 +9,7 @@ import { fcfs } from "./fcfs.js";
 import { sjf } from "./sjf.js";
 import { srtf } from "./srtf.js";
 import { roundRobin } from "./roundRobin.js";
-// import { priority } from "./priority.js";
+import { priority } from "./priority.js";
 
 import { renderGanttChart } from "../visualization/gantt.js";
 
