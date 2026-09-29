@@ -323,3 +323,97 @@
     background: var(--accent);
     color: white;
 }
+
+/* memory management */
+
+.memory-visualization {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    min-height: 160px;
+    padding: 20px;
+}
+
+.memory-block {
+    flex: 1;
+    min-width: 120px;
+    min-height: 120px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.memory-block strong {
+    font-size: 18px;
+}
+
+.memory-block span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.memory-block small {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.memory-block.allocated {
+    border-color: var(--accent);
+}
+
+.memory-block.allocated small {
+    color: var(--accent);
+}
+
+.memory-block.free {
+    border-style: dashed;
+}
+
+.memory-block.free small {
+    color: var(--text-muted);
+}
+
+.memory-block:hover {
+    transform: translateY(-3px);
+}
+
+.memory-results {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.memory-results table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.memory-results th,
+.memory-results td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.memory-results th {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.memory-results td {
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.memory-results tr:hover {
+    background: var(--surface-light);
+}
