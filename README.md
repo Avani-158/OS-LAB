@@ -74,7 +74,7 @@ The application uses a dashboard-style interface with:
 - Dark and light theme support
 
 ### Application Flow
-
+```text
 User Input / Generated Scenario  
 ↓  
 Algorithm Selection  
@@ -86,9 +86,10 @@ Algorithm Processing
 Visualization  
 ↓  
 Results and Performance Metrics
+```
 
 ### Project Structure
-
+```text
 OS-LAB/
 │
 ├── index.html
@@ -138,6 +139,7 @@ OS-LAB/
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
 
 
 ## 6. Technology Stack
