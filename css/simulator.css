@@ -417,3 +417,107 @@
 .memory-results tr:hover {
     background: var(--surface-light);
 }
+
+
+/* Paging visualization */
+
+.paging-visualization {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 180px;
+    padding: 20px;
+}
+
+.paging-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.paging-page {
+    min-width: 55px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-light);
+    font-weight: 600;
+}
+
+.paging-frames {
+    display: flex;
+    gap: 8px;
+}
+
+.frame {
+    width: 65px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-light);
+    font-weight: 600;
+}
+
+.frame.filled {
+    border-color: var(--accent);
+}
+
+.frame.empty {
+    color: var(--text-muted);
+    border-style: dashed;
+}
+
+.paging-status {
+    min-width: 65px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.paging-status.hit {
+    color: #22c55e;
+}
+
+.paging-status.fault {
+    color: #f97316;
+}
+
+
+/* Paging results table */
+
+#pagingResults {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+#pagingResults table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#pagingResults th,
+#pagingResults td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+#pagingResults th {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#pagingResults td {
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+#pagingResults tr:hover {
+    background: var(--surface-light);
+}
