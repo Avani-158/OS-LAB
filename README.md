@@ -132,10 +132,8 @@ OS-LAB/
 │   │   └── optimal.js
 │   │
 │   └── visualization/
-│       ├── gantt.js
-│       ├── memory.js
-│       └── paging.js
-│
+│       ├─ gantt.js
+│      
 ├── README.md
 ├── LICENSE
 └── .gitignore
